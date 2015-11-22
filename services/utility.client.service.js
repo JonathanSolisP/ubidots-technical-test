@@ -8,7 +8,7 @@ angular.module('cubeSummationApp').service('Utility', [
             var matrix = [];
 
             for(x; x<length;x++){
-                matrix.push([])
+                matrix.push([]);
                 for(y = 0; y<length; y++){
                     matrix[x].push([]);
                     for (z = 0; z<length; z++){
@@ -19,8 +19,8 @@ angular.module('cubeSummationApp').service('Utility', [
             return matrix;
         };
 
-        this.generateLevelsOption = function (length) {
-            list_result = [];
+        this.generateLevelsOptions = function (length) {
+            var list_result = [];
             for (var i = 0; i<length; i++){
                 list_result.push({'value': i});
             }
