@@ -29,6 +29,11 @@ angular.module('cubeSummationApp').controller('cubeCtrl', function($scope, Utili
         $scope.matrix[x][y][z] = $scope.value;
     };
 
+    $scope.calculateSumButton = function () {
+        $scope.display_result = true;
+        $scope.sum_result = $scope.calculateSum();
+    };
+
     $scope.calculateSum = function () {
         var x_start = $scope.axis_x_start;
         var y_start = $scope.axis_y_start;
@@ -47,7 +52,6 @@ angular.module('cubeSummationApp').controller('cubeCtrl', function($scope, Utili
                 }
             }
         }
-        console.log(sum_total);
         return sum_total;
     };
 

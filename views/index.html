@@ -17,7 +17,7 @@
 <body ng-controller = "cubeCtrl">
     <br>
     <br>
-    <h1><img src="../img/ubidots-icon.png" alt="Ubidots"> <small>Cube Summation</small></h1>
+    <h1 class="header-margin-left"><img src="../img/ubidots-icon.png" alt="Ubidots"> <small>Cube Summation</small></h1>
     <br>
     <div class="container jumbotron">
         <br>
@@ -27,7 +27,10 @@
                 <div class="controls">
 
                 </div>
-                <div class="jumbotron white-box-container">
+                <!--<div class="jumbotron white-box-container">-->
+                <div>
+                    <h2>Build your 3D Matrix</h2>
+                    <br>
                     <div>
                         <label>Dimensiones: </label>
                         <input type="number" ng-model="length"  min="2" max="10">
@@ -57,6 +60,7 @@
             </div>
         </div>
         <div class="container white-box-container jumbotron ">
+            <h2>Calculate Summation</h2>
             From:
             <div>
                 X: <input type="number" ng-model="axis_x_start" placeholder="X" min="0" max={{length-1}}>
@@ -71,8 +75,10 @@
             </div>
             <br>
             <div>
-                <input type="button" class="btn btn-primary" ng-click="calculateSum()" value="Calculate the sum">
+                <input type="button" class="btn btn-primary" ng-click="calculateSumButton()" value="Calculate sum">
             </div>
+            <br>
+            <div class="alert alert-info" role="alert"  ng-show="display_result">Sum result: {{sum_result}}</div>
         </div>
     </div>
 </body>
