@@ -2,6 +2,10 @@
 <html lang="en" ng-app="cubeSummationApp">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <link rel="icon" type="image/jpg" href="../img/ubidots-icon-title.png">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src ="../app/application.js"></script>
     <script src ="../controller/cube.client.controller.js"></script>
@@ -13,36 +17,46 @@
 <body ng-controller = "cubeCtrl">
     <br>
     <br>
-    <h1 class="page-header">Cube Summation</h1>
+    <h1><img src="../img/ubidots-icon.png" alt="Ubidots"> <small>Cube Summation</small></h1>
     <br>
-    <div class="container">
-        Dimensiones: <input type="number" ng-model="length"  min="0" max="10">
+    <div class="container jumbotron">
         <br>
         <br>
-        <div>
-            X: <input type="number" ng-model="axis_x" placeholder="X" min="0" max={{length-1}}>
-            Y: <input type="number" ng-model="axis_y" placeholder="Y" min="0" max={{length-1}}>
-            Z: <input type="number" ng-model="axis_z" placeholder="Z" min="0" max={{length-1}}>
-            Value: <input type="number" ng-model="value" placeholder="Value" min="0">
-            <input type="button" class="btn btn-primary" ng-click="updateValue()" value="Update Value">
-        </div>
-        <div class="jumbotron">
+        <div class="jumbotron white-box-container">
             <div class="container">
                 <div class="controls">
+
+                </div>
+                <div class="jumbotron white-box-container">
+                    <div>
+                        <label>Dimensiones: </label>
+                        <input type="number" ng-model="length"  min="2" max="10">
+                    </div>
+                    <br>
+                    X: <input type="number" ng-model="axis_x" placeholder="X" min="0" max={{length-1}}>
+                    Y: <input type="number" ng-model="axis_y" placeholder="Y" min="0" max={{length-1}}>
+                    Z: <input type="number" ng-model="axis_z" placeholder="Z" min="0" max={{length-1}}>
+                    Value: <input type="number" ng-model="value" placeholder="Value" min="0">
+                    <input type="button" class="btn btn-primary" ng-click="updateValue()" value="Update Value">
+                    <br>
+                    <br>
                     <label>Select the depth level</label>
                     <select ng-model="level"
                             ng-options="level as level.value for level in level_list">
                     </select>
                 </div>
                 <br>
-                <div data-ng-repeat="row in matrix">
-                    <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default" data-ng-repeat="column in row"><span>{{column[level.value]}}</span></button>
+                <div class="inner">
+                    <div data-ng-repeat="row in matrix">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default" data-ng-repeat="column in row"><span>{{column[level.value]}}</span></button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-        <div>
+        <div class="container white-box-container jumbotron ">
             From:
             <div>
                 X: <input type="number" ng-model="axis_x_start" placeholder="X" min="0" max={{length-1}}>

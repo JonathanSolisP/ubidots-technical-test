@@ -1,0 +1,10 @@
+.white-box-container {
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: 1px solid #D4D4D4;
+    min-width: 1000px;
+}
+
+.inner {
+    margin: 0 auto;
+}
