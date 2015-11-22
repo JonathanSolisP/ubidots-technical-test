@@ -13,15 +13,17 @@
 <body ng-controller = "cubeCtrl">
     <br>
     <br>
-    <div class="page-header">Cube Summation</div>
+    <h1 class="page-header">Cube Summation</h1>
     <br>
     <div class="container">
-
+        Dimensiones: <input type="number" ng-model="length"  min="0" max="10">
+        <br>
+        <br>
         <div>
-            X: <input type="number" ng-model="axis_x" placeholder="X">
-            Y: <input type="number" ng-model="axis_y" placeholder="Y">
-            Z: <input type="number" ng-model="axis_z" placeholder="Z">
-            Value: <input type="number" ng-model="value" placeholder="Value">
+            X: <input type="number" ng-model="axis_x" placeholder="X" min="0" max={{length-1}}>
+            Y: <input type="number" ng-model="axis_y" placeholder="Y" min="0" max={{length-1}}>
+            Z: <input type="number" ng-model="axis_z" placeholder="Z" min="0" max={{length-1}}>
+            Value: <input type="number" ng-model="value" placeholder="Value" min="0">
             <input type="button" class="btn btn-primary" ng-click="updateValue()" value="Update Value">
         </div>
         <div class="jumbotron">
@@ -43,19 +45,19 @@
         <div>
             From:
             <div>
-                X: <input type="number" ng-model="axis_x_start" placeholder="X">
-                Y: <input type="number" ng-model="axis_y_start" placeholder="Y">
-                Z: <input type="number" ng-model="axis_z_start" placeholder="Z">
+                X: <input type="number" ng-model="axis_x_start" placeholder="X" min="0" max={{length-1}}>
+                Y: <input type="number" ng-model="axis_y_start" placeholder="Y" min="0" max={{length-1}}>
+                Z: <input type="number" ng-model="axis_z_start" placeholder="Z" min="0" max={{length-1}}>
             </div>
             To:
             <div>
-                X: <input type="number" ng-model="axis_x_end" placeholder="X">
-                Y: <input type="number" ng-model="axis_y_end" placeholder="Y">
-                Z: <input type="number" ng-model="axis_z_end" placeholder="Z">
+                X: <input type="number" ng-model="axis_x_end" placeholder="X" min="0" max={{length-1}}>
+                Y: <input type="number" ng-model="axis_y_end" placeholder="Y" min="0" max={{length-1}}>
+                Z: <input type="number" ng-model="axis_z_end" placeholder="Z" min="0" max={{length-1}}>
             </div>
             <br>
             <div>
-                <input type="button" class="btn btn-primary" ng-click="updateValue()" value="Update Value">
+                <input type="button" class="btn btn-primary" ng-click="calculateSum()" value="Calculate the sum">
             </div>
         </div>
     </div>
