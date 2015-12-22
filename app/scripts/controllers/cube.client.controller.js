@@ -1,3 +1,5 @@
+
+
 angular.module('cubeSummationApp').controller('cubeCtrl', function($scope, Utility) {
     $scope.length = 2;
     $scope.axis_x = 0;
