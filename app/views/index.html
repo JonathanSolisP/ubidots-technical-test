@@ -2,14 +2,14 @@
 <html lang="en" ng-app="cubeSummationApp">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../app/styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
 
     <link rel="icon" type="image/jpg" href="../images/ubidots-icon-title.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src ="../app/scripts/app.js"></script>
-    <script src ="../app/scripts/controllers/cube.client.controller.js"></script>
-    <script src ="../app/scripts/services/utility.client.service.js"></script>
+    <script src ="../scripts/app.js"></script>
+    <script src ="../scripts/controllers/cube.client.controller.js"></script>
+    <script src ="../scripts/services/utility.client.service.js"></script>
 
     <meta charset="UTF-8">
     <title>Ubidots Test</title>
@@ -32,11 +32,11 @@
                         <input type="number" ng-model="length"  min="2" max="100">
                     </div>
                     <br>
-                    X: <input type="number" ng-model="axis_x" placeholder="X" min="0" max={{length-1}}>
-                    Y: <input type="number" ng-model="axis_y" placeholder="Y" min="0" max={{length-1}}>
-                    Z: <input type="number" ng-model="axis_z" placeholder="Z" min="0" max={{length-1}}>
-                    Value: <input type="number" ng-model="value" placeholder="Value" min="0">
-                    <input type="button" class="btn btn-primary" ng-click="updateValue()" value="Update Value">
+                    X: <input type="number" ng-model="updatePoint.x" placeholder="X" min="0" max={{length-1}}>
+                    Y: <input type="number" ng-model="updatePoint.y" placeholder="Y" min="0" max={{length-1}}>
+                    Z: <input type="number" ng-model="updatePoint.z" placeholder="Z" min="0" max={{length-1}}>
+                    Value: <input type="number" ng-model="updatePoint.value" placeholder="Value" min="0">
+                    <input type="button" class="btn btn-primary" ng-click="updateValue(updatePoint)" value="Update Value">
                     <br>
                     <br>
                     <label>Select the depth level</label>
@@ -47,7 +47,7 @@
                 <br>
                 <div class="inner">
                     <div data-ng-repeat="row in matrix">
-                        <div class="btn-group" role="group" aria-label="...">
+                        <div class="btn-group" role="group" aria-label=".">
                             <button type="button" class="btn btn-default" data-ng-repeat="column in row"><span>{{column[level.value]}}</span></button>
                         </div>
                     </div>
@@ -59,15 +59,15 @@
             <h2>Calculate Summation</h2>
             From:
             <div>
-                X: <input type="number" ng-model="axis_x_start" placeholder="X" min="0" max={{length-1}}>
-                Y: <input type="number" ng-model="axis_y_start" placeholder="Y" min="0" max={{length-1}}>
-                Z: <input type="number" ng-model="axis_z_start" placeholder="Z" min="0" max={{length-1}}>
+                X: <input type="number" ng-model="startSumPoint.x" placeholder="X" min="0" max={{length-1}}>
+                Y: <input type="number" ng-model="startSumPoint.y" placeholder="Y" min="0" max={{length-1}}>
+                Z: <input type="number" ng-model="startSumPoint.z" placeholder="Z" min="0" max={{length-1}}>
             </div>
             To:
             <div>
-                X: <input type="number" ng-model="axis_x_end" placeholder="X" min="0" max={{length-1}}>
-                Y: <input type="number" ng-model="axis_y_end" placeholder="Y" min="0" max={{length-1}}>
-                Z: <input type="number" ng-model="axis_z_end" placeholder="Z" min="0" max={{length-1}}>
+                X: <input type="number" ng-model="endSumPoint.x" placeholder="X" min="0" max={{length-1}}>
+                Y: <input type="number" ng-model="endSumPoint.y" placeholder="Y" min="0" max={{length-1}}>
+                Z: <input type="number" ng-model="endSumPoint.z" placeholder="Z" min="0" max={{length-1}}>
             </div>
             <br>
             <div>

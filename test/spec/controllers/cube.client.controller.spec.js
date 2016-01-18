@@ -25,6 +25,7 @@ describe("Service: Utility", function() {
 describe('Controller: cubeCtrl', function () {
     var $scope;
     var Utility;
+    var _3DMatrix;
 
     beforeEach(module('cubeSummationApp'));
 
@@ -32,10 +33,16 @@ describe('Controller: cubeCtrl', function () {
         Utility = _Utility_;
         $scope = $rootScope.$new();
         var ctrl = $controller('cubeCtrl', {$scope: $scope, Utility: Utility});
+        $scope.matrix = Utility.generateMatrix($scope.length);
     }));
 
 
-    it('should test something in the controller', function () {
-       expect(true).toBe(true);
+    it('should update a position value of the matrix based on 3 axis', function () {
+        var x = 0;
+        var y = 1;
+        var z = 2;
+        var value = 5;
+        $scope.updateValue(x, y, z, value);
+       expect($scope.matrix[x][y][z]).toBe(value);
     });
 });
