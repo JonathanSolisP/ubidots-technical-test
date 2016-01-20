@@ -6,16 +6,9 @@ angular.module('cubeSummationApp').controller('cubeCtrl', function($scope, Utili
     $scope.startSumPoint = Utility.generatePoint(0, 0, 0, 0);
     $scope.endSumPoint = Utility.generatePoint(0, 0, 0, 0);
 
-    $scope.level = 0;
-    $scope.matrix = Utility.generateMatrix($scope.length)['a'];
-    $scope._3DMatrix = Utility.generateMatrix($scope.length)['b'];
-    $scope.level_list = Utility.generateLevelsOptions($scope.length);
-    $scope.level = $scope.level_list[0];
-
     $scope.updateValue = function(toUpdatePoint){
         var position = getPosition(toUpdatePoint);
         position.value = toUpdatePoint.value;
-        console.log($scope._3DMatrix);
     };
 
     function getPosition(point){
@@ -43,10 +36,30 @@ angular.module('cubeSummationApp').controller('cubeCtrl', function($scope, Utili
         console.log(sum_total);
     };
 
+    $scope.displaySingleLevel = function(){
+        var level = $scope.level.value;
+        var length = $scope.length;
+        var rowCounter = 0;
+        var _2DMatrix = [];
+        var row = [];
+        for(var i=0; i<$scope._3DMatrix.length/length; i++){
+            var index = i+(level*(Math.pow(length, 2)));
+            row.push($scope._3DMatrix[index]);
+            rowCounter++;
+            if(rowCounter == length){
+                rowCounter = 0;
+                _2DMatrix.push(row);
+                row = [];
+            }
+        }
+        return _2DMatrix;
+    };
+
+
     $scope.$watch('length', function() {
-        $scope.matrix = Utility.generateMatrix($scope.length)['a'];
-        $scope._3DMatrix = Utility.generateMatrix($scope.length)['b'];
+        $scope._3DMatrix = Utility.generateMatrix($scope.length);
         $scope.level_list = Utility.generateLevelsOptions($scope.length);
         $scope.level = $scope.level_list[0];
+        $scope._2DMatrix = $scope.displaySingleLevel();
     });
 });

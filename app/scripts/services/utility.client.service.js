@@ -5,19 +5,15 @@ angular.module('cubeSummationApp').service('Utility', [
             var z = 0;
             var x = 0;
             var y = 0;
-            var matrix = [];
             var _3DMatrix = [];
             for(z; z<length; z++){
-                matrix.push([]);
                 for(x = 0; x<length; x++){
-                    matrix[z].push([]);
                     for (y = 0; y<length; y++){
-                        matrix[z][x][y] = 0;
                         _3DMatrix.push(this.generatePoint(x, y, z, 0));
                     }
                 }
             }
-            return {'a': matrix, 'b': _3DMatrix};
+            return _3DMatrix;
         };
 
         this.generateLevelsOptions = function (length) {

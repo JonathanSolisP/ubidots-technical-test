@@ -46,9 +46,9 @@
                 </div>
                 <br>
                 <div class="inner">
-                    <div data-ng-repeat="row in matrix">
+                    <div data-ng-repeat="row in _2DMatrix">
                         <div class="btn-group" role="group" aria-label=".">
-                            <button type="button" class="btn btn-default" data-ng-repeat="column in row"><span>{{column[level.value]}}</span></button>
+                            <button type="button" class="btn btn-default" data-ng-repeat="column in row"><span>{{column.value}}</span></button>
                         </div>
                     </div>
                 </div>
